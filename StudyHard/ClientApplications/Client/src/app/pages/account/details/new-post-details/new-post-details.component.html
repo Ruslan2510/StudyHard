@@ -1,0 +1,61 @@
+﻿<div class="page">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12" *ngIf="isLoading" style="margin:auto">
+                    <div style="text-align: center;">
+                        <app-loader></app-loader>
+                    </div>
+                </div>
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <h2 *ngIf="!isLoading && !showSuccess" class="mt-80">Підтвердження деталей замовлення</h2>
+                    <div *ngIf="!isLoading && !showSuccess" class="row panel ">
+                        <div class="panel-body container-fluid">
+                            <div class="mb-20">
+                                <h4 class="example-title">ПІП<span style="color:red">*</span></h4>
+                                <input type="text" value="user.fullName" [(ngModel)]="user.fullName" class="form-control">
+                                <span *ngIf="user.fullName && user.fullName.length < 1" style="color:red">Подивіться у паспорті</span>
+                            </div>
+                            <div class="mb-20">
+                                <h4 class="example-title">Місто<span style="color:red">*</span></h4>
+                                <input type="text" [(ngModel)]="user.city" class="form-control">
+                                <span *ngIf="user.city && user.city.length < 1" style="color:red">Це поле обов'язкове</span>
+                            </div>
+                            <div class="mb-20">
+                                <h4 class="example-title">Відділення Нової пошти<span style="color:red">*</span></h4>
+                                <input type="text" [(ngModel)]="user.newPost" class="form-control">
+                                <span *ngIf="user.newPost && user.newPost.length < 1" style="color:red">Це поле обов'язкове</span>
+                            </div>
+                            <div class="mb-20">
+                                <h4 class="example-title">Номер телефону<span style="color:red">*</span></h4>
+                                <input type="text" value="user.telephone" [(ngModel)]="user.telephone" prefix="+38" mask="(000) 000 00 00" class="form-control">
+                                <span *ngIf="user.telephone && user.telephone.length < 10" style="color:red">Невірно набраний номер</span>
+                            </div>
+                            <div style="text-align:right">
+                                <button [disabled]="(!user.fullName || user.fullName.length == 0) || (!user.telephone || user.telephone.length < 10) || (!user.newPost || user.newPost.length < 1)|| (!user.city || user.city.length < 1)" (click)="save()" class="btn btn-primary">Зберегти</button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="!isLoading && showSuccess" class="row panel mt-80">
+                        <div class="panel-body container-fluid" style="text-align: center;">
+                            <h4>
+                                Ваше замовлення в обробці.
+                            </h4>
+                            <button (click)="navigate()" class="btn btn-primary">
+                               На головну
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Blob\**" />
+    <Compile Remove="Category\**" />
+    <Compile Remove="Subject\**" />
+    <EmbeddedResource Remove="Blob\**" />
+    <EmbeddedResource Remove="Category\**" />
+    <EmbeddedResource Remove="Subject\**" />
+    <None Remove="Blob\**" />
+    <None Remove="Category\**" />
+    <None Remove="Subject\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StudyHard.Common.Dto\StudyHard.Common.Dto.csproj" />
+    <ProjectReference Include="..\StudyHard.Data\StudyHard.Data.csproj" />
+  </ItemGroup>
+
+</Project>

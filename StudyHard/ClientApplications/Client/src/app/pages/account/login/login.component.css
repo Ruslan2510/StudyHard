@@ -1,0 +1,249 @@
+﻿.page-login-v2 {
+    height: 100%;
+    overflow: hidden;
+    background-color: #3e8ef7 !important;
+}
+.custom-header {
+    font-size: 27px;
+    font-weight: 600;
+    color:#fff;
+}
+
+.mobile-view {
+    display: none;
+}
+/*.margin-bottom-ui{
+    margin-bottom:0px!important;
+}*/
+
+.page-login-v2:before {
+}
+
+    .page-login-v2.page-dark.layout-full:after {
+        background-color: rgba(38, 50, 56, 0.6);
+    }
+
+
+        .page-login-v2 .page-brand-info .brand-img {
+            vertical-align: middle;
+        }
+
+        .page-login-v2 .page-brand-info .brand-text {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 11px 0 11px 20px;
+        }
+
+    .page-login-v2 .page-login-main {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: auto;
+        min-height: 100%;
+        padding: 130px 60px 150px;
+        color: #76838f;
+        background: #fff;
+    }
+
+        .page-login-v2 .page-login-main .brand {
+            margin-bottom: 60px;
+        }
+
+        .page-login-v2 .page-login-main .brand-img {
+            vertical-align: middle;
+        }
+
+        .page-login-v2 .page-login-main .brand-text {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 11px 0 11px 20px;
+            color: #3e8ef7;
+        }
+
+    .page-login-v2 form {
+        width: 350px;
+        margin: 45px 0 20px;
+    }
+
+        .page-login-v2 form > button {
+            margin-top: 38px;
+        }
+
+        .page-login-v2 form a {
+            margin-left: 20px;
+        }
+
+    .page-login-v2 footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 50px 60px;
+        text-align: center;
+    }
+
+    .page-login-v2 .social .icon, .page-login-v2 .social .icon:hover, .page-login-v2 .social .icon:active {
+        color: #fff;
+    }
+
+    .white-text{
+        color:#ffffff!important;
+    }
+
+@media (min-width: 768px) {
+    .page-login-main {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .page-login-v2 .page-login-main {
+        padding-top: 60px;
+    }
+}
+
+@media (max-width: 1611px) {
+    .small-padding {
+        padding-top:15px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .custom-header{
+        font-size:23px;
+    }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .page-login-v2 .page-login-main {
+        padding-top: 80px;
+    }
+
+    .page-login-v2 .page-brand-info > p {
+        opacity: 0;
+        color: transparent;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .mobile-margin {
+        margin-top: 50px;
+    }
+    .custom-header {
+        color: #000000;
+        font-size: 14px;
+    }
+    .mobile-hidden {
+        display: none;
+    }
+    .mobile-view {
+        display: block;
+    }
+    .page-login-v2 .page-login-main {
+        padding-top: 60px;
+        width: 100%;
+    }
+
+    .page-login-v2 form {
+        width: auto;
+    }
+}
+
+@media (max-width: 479.98px) {
+
+    .page-login-v2 .page-login-main {
+        padding: 50px 30px 180px;
+    }
+
+    .page-login-v2 form {
+        width: auto;
+    }
+
+    .page-login-v2 footer {
+        margin: 50px 30px;
+    }
+}
+
+.login-form::before,
+.login-form::after {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    padding-right: 60px;
+    border-top-left-radius: 40%;
+    border-top-right-radius: 45%;
+    border-bottom-left-radius: 35%;
+    border-bottom-right-radius: 40%;
+    z-index: -1;
+}
+
+.login-form::before {
+    left: 40%;
+    top: 10%;
+    background-color: rgba(69, 105, 144, 0.15);
+    animation: wawes 6s infinite linear;
+}
+
+.login-form::after {
+    left: 35%;
+    top: 15%;
+    background-color: rgba(2, 128, 144, 0.2);
+    animation: wawes 7s infinite;
+}
+
+.login-form input {
+    display: block;
+    border: 1px solid #3e8ef7;
+    border-radius: 5px;
+    background: white;
+    width: 80%;
+    padding: 10px 10px;
+    margin: 0px -10px;
+    margin-bottom: 15px;
+}
+
+.login-form > button {
+    font-family: 'Asap', sans-serif;
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    border: 0;
+    padding: 10px 0;
+    margin-top: 10px;
+    margin-left: -10px;
+    border-radius: 5px;
+    width: 80% !important;
+    transition: background-color 300ms;
+}
+
+.login-form > button:hover {
+    background-color: rgba(242, 67, 83, 1);
+}
+
+@keyframes wawes {
+    from {
+        transform: rotate(0);
+   }
+    to {
+        transform: rotate(360deg);
+   }
+}
+
+.telegram-login-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.login-container {
+    position: relative;
+
+}
+
+.loading-board {
+    position: absolute;
+    z-index: 1;
+    opacity: 0.5;
+    width: 100vw;
+    height: 100vh;
+}

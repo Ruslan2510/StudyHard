@@ -1,0 +1,75 @@
+﻿<div class="page" *ngIf="isLoading">
+    <div  class="page-content">
+        <div style="text-align:center">
+            <app-loader></app-loader>
+        </div>
+    </div>
+</div>
+<div *ngIf="!isLoading" class="page page-aside-left">
+    <div class="row" style=" padding-left: 50px;width: 100%;">
+        <ol class="breadcrumb breadcrumb-arrow" style="padding-top: 100px;">
+            <li class="breadcrumb-item"><a class="icon wb-arrow-left" routerLink="/platform/categories/{{subjectId}}">Категоріі</a></li>
+            <li class="breadcrumb-item active">{{selectedCategoryName}}</li>
+        </ol>
+    </div>
+    <div class="documents-wrap article row" style=" margin-right: 1.9285rem; margin-left: 1.9285rem;">
+        <div class="article-sidebar sticky col-md-3 col-sm-12" id="articleSticky">
+            <div class="card-header">
+                <h3 class="card-title">{{selectedCategoryName}}</h3>
+            </div>
+            <ul class="list-group list-group-hover nav ">
+                <li class="list-group-item nav-item mobile-hidden-menu" (click)="toggleMenu()" style="cursor: pointer;">
+                    Категорії
+                    <i *ngIf="!isZmist" aria-hidden="true" class="site-menu-icon wb-triangle-left"></i>
+                    <i *ngIf="isZmist" aria-hidden="true" class="site-menu-icon wb-triangle-down"></i>
+                </li>
+                <li *ngFor="let t of categories; index as i" class="list-group-item nav-item mobile-hidden-zmist" [ngStyle]="{'display': isZmist ? 'block' : 'none'}">
+                    <a routerLink="/platform/{{subjectId}}/questions/{{t?.id}}" class="nav-link active">{{t?.name}}</a>
+                </li>
+            </ul>
+        </div>
+        <div *ngIf="!isLoading && questions && queIdForUI < questions.length" class="article-content col-md-9 col-sm-12">
+            <div class="col-md-12 col-sm-12">
+                <div class="panel panel-bordered mr-5 ml-5 mb-5 mt-5">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            {{questions[queIdForUI]?.questionText}}
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div *ngFor="let a of questions[queIdForUI].simpleTestAnswers; index as i;">
+                            <div (click)="createAnswer(a)" class="question-element" [class.question-element-correct]="showAnswers && a.isCorrect" [class.question-element-incorect]="showAnswers && userAnswer.simpleTestAnswerId == a.id && !a.isCorrect">
+                                <p style="margin-bottom: 0px;">
+                                    {{a.answerText}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 action-buttons-position" style="padding-bottom: 20px;">
+                        <a routerLink="/platform/categories/{{subjectId}}" class="btn btn-danger">
+                            <span>Завершити</span>
+                        </a>
+                        <button type="button" (click)="next()" class="btn btn-primary">
+                            <span>Наступний</span>
+                        </button>
+                    </div>
+                </div>
+                <div *ngIf="questions[queIdForUI].testDescription !=null && questions[queIdForUI].testDescription.length > 0 && showAnswers" class="panel panel-bordered mr-5 ml-5 mb-5 mt-5">
+                    <h3>Пояснення</h3>
+                    <quill-view [content]="questions[queIdForUI].testDescription" format="json" theme="bubble">
+                    </quill-view>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="queIdForUI >= questions.length" class="col-md-9 col-sm-12" style="width:100%">
+            <div class="panel panel-bordered result-block">
+                <h1>Ви закінчили тест!</h1>
+                <br />
+                <a routerLink="/platform/categories/{{subjectId}}" class="btn btn-warning">
+                    <span>Завершити проходження</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>

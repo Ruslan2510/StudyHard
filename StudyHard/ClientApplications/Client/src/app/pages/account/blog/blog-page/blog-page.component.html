@@ -1,0 +1,17 @@
+<div *ngIf="isLoading" class="page page-aside-left">
+    <div class="page-content container-fluid">
+        <div class="container mt-50">
+            <div style="text-align:center">
+                <app-loader></app-loader>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="!isLoading" class="page page-aside-left">
+    <div class="page-content container-fluid">
+        <div class="container mt-50">
+            <div class="ck-content" [innerHTML]="blog.content">
+            </div>
+        </div>
+    </div>
+</div>

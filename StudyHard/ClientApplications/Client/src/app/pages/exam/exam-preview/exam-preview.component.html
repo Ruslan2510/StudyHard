@@ -1,0 +1,52 @@
+﻿<div *ngIf="isRatingLoading; else loaded" class="row mt-50">
+    <div style="margin:auto">
+        <app-loader></app-loader>
+    </div>
+</div>
+
+<ng-template #loaded>
+    <div class="row">
+        <div class="panel-bordered" style="width: 100%;">
+            <div class="panel panel-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <h2>Пройдіть пробне ЗНО з правознавства</h2>
+                        <p>Дізнайтесь своє місце у рейтингу користувачів платформи</p>
+                        <h3>Ваш останній результат {{lastResult}} / 100</h3>
+                        <p *ngIf="isLimitReached" class="text-danger">Для того, щоб безлімітно проходити пробне ЗНО, потрібно придбати будь-який курс підготовки.</p>
+                        <button [disabled]="isAvailableForUser == false || isLimitReached" routerLink="/platform/exam/{{subjectId}}" class="btn btn-block btn-primary">Розпочати</button>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <h4>Рейтинг користувачів</h4>
+                        <div class="table-responsive">
+                            <table class="table table-analytics mb-0 text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th class="language"></th>
+                                        <th class="vists"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let el of subjectRating">
+                                        <td>
+                                            <span class="country-name">{{el.email}}</span>
+                                        </td>
+                                        <td>
+                                            <div class="progress progress-xs mb-0">
+                                                <div class="progress-bar progress-bar-info bg-blue-600" [style.width]="el.width" aria-valuemax="100" aria-valuemin="0" aria-valuenow="{{el.result}}" role="progressbar">
+                                                </div>
+                                            </div>
+                                            <span class="progress-percent">
+                                                {{el.result}} / 100
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

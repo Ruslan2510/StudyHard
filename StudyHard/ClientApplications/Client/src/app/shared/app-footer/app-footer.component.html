@@ -1,0 +1,60 @@
+<footer id="colorlib-footer">
+    <div class="container">
+        <div class="row row-pb-md">
+            <div class="col-md-3 colorlib-widget">
+                <h4>Про Pravozno</h4>
+                <p>
+                    Команда StudyHard створена у 2018 році та щорічно оновлює базу знань відповідно до нових програм МОН.
+
+                    Мета авторського колективу - проведення системної підготовки бакалаврів до зовнішнього незалежного оцінювання.
+
+                    Протягом років спільної роботи автори створили:
+                    навчальний посібник, збірник тестових завдань та
+                    електронну базу для онлайн-тестування.
+                </p>
+                <div class="icons-container">
+                    <ul class="colorlib-social-icons">
+                        <li><a href="https://www.instagram.com/pravozno/"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="https://www.facebook.com/pravozno"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="https://t.me/pravozno"><i class="fab fa-telegram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3 colorlib-widget">
+                <h4>Посилання</h4>
+                <div>
+                    <ul class="colorlib-footer-links">
+                        <li><a href="/"><i class="fas fa-check"></i> Головна</a></li>
+                        <li><a href="/shared/aboutcompany"><i class="fas fa-check"></i> Про нас</a></li>
+                        <li><a href="/shared/termofuses"><i class="fas fa-check"></i> Правила користування</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3 colorlib-widget">
+                <h4>Інші новини</h4>
+                <div *ngFor="let blog of blogs">
+                    <div class="f-blog">
+                        <a href="blog/{{blog.id}}" class="blog-img" style="background-image: url(api/Blog/image/{{blog.imageId}});">
+                        </a>
+                        <div class="desc">
+                            <h2><a href="blog/{{blog.id}}">{{blog.heading}}</a></h2>
+                            <p class="admin"><span>{{blog.datePublication}}</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 colorlib-widget">
+                <h4>Контакти</h4>
+                <ul class="colorlib-footer-links">
+                    <li>Київ, Україна</li>
+                    <li><a href="tel://380931248288"><i class="fas fa-phone"></i> +380931248288</a></li>
+                    <li><a href="mailto:pravozno@gmail.com"><i class="fas fa-envelope-square"></i>pravozno@gmail.com</a></li>
+                    <li><a href="https://pravozno.com.ua"><i class="fas fa-map-marker-alt"></i>pravozno.com.ua</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</footer>

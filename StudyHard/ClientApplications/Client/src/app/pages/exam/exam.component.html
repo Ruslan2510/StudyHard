@@ -1,0 +1,112 @@
+<div class="page">
+    <div class="page-content container-fluid">
+        <div class="container">
+            <div *ngIf="isLoading; else loaded" class="row mt-50">
+                <div style="margin:auto">
+                    <app-loader></app-loader>
+                </div>
+            </div>
+
+            <ng-template #loaded>
+                <div class="row mt-50">
+                    <div class="col"></div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 panel panel-bordered">
+                        <div class="panel-body">
+                            <div class="row mb-20">
+                                <div class="col-6">
+                                    <div class="col-12">
+                                        <span style="font-size: 18px; color: black;">У тебе залишилось</span>
+                                    </div>
+                                    <div class="col-12" style="color: black; font-size: 24px">
+                                        <span style="color: green;">{{categories.length - answers.length}}</span>/{{categories.length}}
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <timer [timerStarted]="examStarted" (finishEvent)="finishExam()"></timer>
+                                </div>
+                            </div>
+                            <div *ngIf="examStarted" class="row">
+                                <div class="col" style="text-align: center;">
+                                    <button type="button"
+                                            (click)="finishExam()"
+                                            class="btn btn-warning">
+                                        Завершити проходження
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col"></div>
+                </div>
+
+                <div class="row">
+                    <div *ngIf="!examStarted && !showResults; else started" class="col-12">
+                        <div style="display: block; width: 25%; margin: auto;">
+                            <button type="button" (click)="startExam()" class="btn btn-block btn-primary">
+                                Почати пробне ЗНО
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-3"></div>
+                    <div class="col-sm-12 col-md-6 panel panel-bordered" *ngIf="examStarted && showResults == false">
+                       <div class="panel-heading">
+                          <h3 class="panel-title">
+                              {{ categories[currentTestIndex].questionText }}
+                          </h3>
+                       </div>
+                       <div class="panel-body">
+                           <div *ngFor="let a of categories[currentTestIndex].answerResultDtos; index as i;">
+                               <div class="row custom-control custom-radio">
+                                   <div class="row mb-2">
+                                       <div class="col-md-1 col-sm-1">
+                                           <h4>{{variants[i]}}</h4>
+                                       </div>
+                                       <div class="col-md-8 col-sm-8">
+                                           <h5>{{a.answer}}</h5>
+                                       </div>
+                                       <div class="col-md-3 col-sm-1" style=" text-align: center;">
+                                           <div class="radio-custom radio-primary" style="min-height: 50px;">
+                                               <input (change)="createAnswer(a, currentTestIndex)" type="radio" name="{{categories[currentTestIndex].id}}" id="answer{{categories[currentTestIndex].id}}">
+                                               <label></label>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <hr />
+
+                               </div>
+                           </div>
+                           <div>
+                               <button type="button"
+                                   *ngIf="categories.length - 1 !== currentTestIndex; else finishTestBtn"
+                                   (click)="nextTest()"
+                                   [disabled]="!answers[currentTestIndex]"
+                                   class="btn btn-block btn-primary">
+                                     Наступне питання
+                               </button>
+
+                                <ng-template #finishTestBtn>
+                                    <button type="button"
+                                       [disabled]="!answers[currentTestIndex]"
+                                       (click)="finishExam()"
+                                       class="btn btn-block btn-success">
+                                       Завершити проходження
+                                    </button>
+                                </ng-template>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="col-3"></div>
+
+                    <div *ngIf="showResults">
+                        <span>
+                            Ви набрали {{ correctAnswers }}
+                        </span>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

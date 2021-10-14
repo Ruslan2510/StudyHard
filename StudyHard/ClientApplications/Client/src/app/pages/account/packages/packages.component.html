@@ -1,0 +1,29 @@
+﻿<div class="pricing-list text-left">
+    <div class="pricing-header bg-blue-600">
+        <div class="pricing-title">{{package.name}}</div>
+        <div class="pricing-price">
+            <span class="pricing-currency">₴</span>
+            <span class="pricing-amount">{{package.price}}</span>
+        </div>
+        <p class="px-30 pb-25">{{package.description}}</p>
+    </div>
+    <div class="pricing-footer text-center bg-blue-grey-100">
+        <button *ngIf="!package.isPurchased && !package.isComingSoon" (click)="goToLiqpay(package.id)" class="btn btn-primary btn-block">
+            <i class="icon wb-arrow-right font-size-16 mr-15" aria-hidden="true"></i>
+            Купити
+        </button>
+        <button *ngIf="!package.isPurchased && package.isComingSoon" disabled class="btn btn-primary btn-block">
+            <i class="icon wb-arrow-right font-size-16 mr-15" aria-hidden="true"></i>
+            В розробці
+        </button>
+        <a *ngIf="package.isPurchased" routerLink="/platform/subjects/{{package.id}}" class="btn btn-primary btn-block">
+            <i class="icon wb-arrow-right font-size-16 mr-15" aria-hidden="true"></i>
+            Почати
+        </a>
+    </div>
+    <!--<ul *ngFor="let s of package.testSubjects; index as i" class="pricing-features" style="background-color:white;">
+        <li [style.border-top]="i > 0 ? '1px dashed #e4eaec' : ''" style="border-top: ;">
+            <strong>{{s.name}}</strong>
+        </li>
+    </ul>-->
+</div>

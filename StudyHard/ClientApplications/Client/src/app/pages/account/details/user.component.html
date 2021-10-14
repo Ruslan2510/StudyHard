@@ -1,0 +1,133 @@
+﻿<div class="page">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row" style=" padding-right: 1.0715rem; padding-left: 1.0715rem;">
+                <div *ngIf="!user.phoneNumber || !user.email || !user.name" role="alert" class="alert dark alert-warning alert-dismissible" style="width:100%">
+                    <h4>Доступ обмежений</h4>
+                    <p>
+                        Увага! У вас не заповнений профіль. Це обмежує доступ до пробного ЗНО та перевірки відповідей на телеграм тести.
+                    </p>
+                    <p class="mt-15">
+                        <button routerLink="/platform/user/profile" class="btn btn-primary btn-inverse btn-outline" type="button">Заповнити</button>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div *ngIf="isLoading" class="col">
+                    <div style="text-align: center;">
+                        <app-loader></app-loader>
+                    </div>
+                </div>
+                <div *ngIf="!isLoading" class="col-md-3">
+                    <div *ngIf="user" id="personalCompletedWidget" class="card card-shadow pb-20">                        
+                        <div class="card-header card-header-transparent cover overlay">
+                            <img class="cover-image" src="assets/global/portraits/6.png">
+                            <div class="overlay-panel overlay-background vertical-align" style="text-align: center;background:rgb(0 0 0 / 0%)">
+                                <div class="vertical-align-middle">
+                                    <a *ngIf="user.image; else defaultImage" class="avatar" style="width: 85px;" routerLink="/platform/user/profile">
+                                        <img style="max-width: 100px;" [src]="user.image" alt="...">
+                                    </a>
+                                    <ng-template #defaultImage>
+                                        <a class="avatar" style="width: 85px;" routerLink="/platform/user/profile">
+                                            <img style="max-width: 100px;" src="assets/global/portraits/5.jpg" alt="...">
+                                        </a>
+                                    </ng-template>
+                                    <br />
+                                    <a style="color:white" routerLink="/platform/user/profile">Редагувати</a>
+                                    <div class="font-size-20 mt-10">{{ user.name }}</div>
+                                    <div class="font-size-14">{{ user.customEmail }}</div>
+                                    <div class="font-size-14">+3{{ user.phoneNumber }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-block">
+                            <div class="row no-space px-30" style="text-align: left;">
+                                <p style="margin-bottom: 0px; margin-top: 10px;">
+                                    Знайти відповідь на Telegram-тест:
+                                </p>
+                            </div>
+                            <div class="row no-space py-20 px-30 text-center">
+                                <div class="col-xs-12" style="width:100%">
+                                    <input type="number" #inTestId class="form-control">
+                                </div>
+                                <div class="col-xs-12" style="width:100%">
+                                    <button [disabled]="!user.phoneNumber || !user.email || !user.name" (click)="findTest(inTestId.value)" type="submit" class="btn btn-primary btn-block">Знайти</button>
+                                </div>
+                            </div>
+                            <div *ngIf="question" class="row no-space px-30 text-center">
+                                <div class="col text-danger">
+                                    {{question.message}}
+                                </div>
+                            </div>
+                            <!--<div class="row text-center mb-20">
+                                <div class="col-6">
+                                    <div class="counter">
+                                        <div class="counter-label total-completed">TOTAL COMPLETED</div>
+                                        <div class="counter-number red-600">1,628</div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="counter">
+                                        <div class="counter-label">TOTAL TIME</div>
+                                        <div class="counter-number blue-600">17</div>
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-9">
+                    <exam-preview></exam-preview>
+                </div>
+            </div>
+            <div *ngIf="isLoadingPackages" class="row">
+                <div style="margin:auto">
+                    <app-loader></app-loader>
+                </div>
+            </div>
+            <div *ngIf="!isLoadingPackages" class="row">
+                <packages *ngFor="let p of userpackages; index as i" [package]="p" [index]="i" class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                </packages>
+            </div>
+
+
+            <div *ngIf="isLoadingNews" class="col">
+                <div style="text-align: center;">
+                    <app-loader></app-loader>
+                </div>
+            </div>
+            <div *ngIf="!isLoadingNews" style="height:100%;">
+                <div class="panel" id="messge">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Новини</h3>
+                    </div>
+                    <div *ngIf="blogNews" class="panel-body">
+                        <ul class="list-group list-group-full h-250 scrollable is-enabled scrollable-vertical" data-plugin="scrollable" style="position: relative;">
+                            <div data-role="container" class="scrollable-container">
+                                <div data-role="content" class="scrollable-content">
+                                    <li *ngFor="let blognew of blogNews" class="list-group-item">
+                                        <div class="media">
+                                            <div class="pr-20">
+                                                <span class="avatar avatar-online">
+                                                    <img src="api/Blog/image/{{blognew.imageId}}" alt="">
+                                                </span>
+                                            </div>
+                                            <div class="media-body">
+                                                <h5 class="list-group-item-heading mt-0 mb-5">
+                                                    <small class="float-right">{{blognew.datePublication}}</small>
+                                                    <a href="blog/{{blognew.id}}">{{blognew.heading}}</a>
+                                                </h5>
+                                                <p class="list-group-item-text">{{blognew.previewText}}</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </div>
+                            </div>
+                            <div class="scrollable-bar scrollable-bar-vertical scrollable-bar-hide" draggable="false"><div class="scrollable-bar-handle" style="height: 114.367px; transform: translate3d(0px, 0px, 0px);"></div></div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+.znotimer-element {
+    text-align: center;
+    border-radius: 30px;
+}
+.znotimer-numbers {
+    color: #fdfdfd;
+    font-size: 79px;
+    font-family: cursive;
+    font-weight: 900;
+}
+
+.znotimer-numbers-desc {
+    color: #fff;
+    font-size: 15px;
+}
+
+@media (max-width: 1758px) {
+    .hidden-clock {
+        display: none;
+    }
+}
+@media (min-width: 1759px) {
+    .hidden-clock-show {
+        display: none;
+    }
+}
+
+@media(max-width:1000px){
+    .znotimer-numbers{
+        font-size:51px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .znotimer-numbers {
+        color: #000000;
+    }
+    .znotimer-numbers{
+        font-size:36px;
+    }
+    .znotimer-numbers-desc {
+        color: #000000;
+    }
+}

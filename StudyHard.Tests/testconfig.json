@@ -1,0 +1,10 @@
+{
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=(LocalDb)\\MSSQLLocalDB; Database=TestDb1908; User ID=Ruslan; Password=123456d;",
+    "AzureBlobStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=itleg;AccountKey=TMkLPHhgp0AeuHodAaQO40CvlEO31EvFgVlE1CL86vFhWOdFsLSFxFqNt+18nApM5JQcjw9qZ1xqxyjTIrUsrQ==;EndpointSuffix=core.windows.net"
+  },
+  "Analytics": {
+    "AppKey": "9D07C7C7-D4DC-4BC8-B044-044A8CCABA76"
+  }
+}

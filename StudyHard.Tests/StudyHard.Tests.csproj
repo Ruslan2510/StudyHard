@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <PlatformTarget>AnyCPU</PlatformTarget>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="5.0.9" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+        <PackageReference Include="MSTest.TestAdapter" Version="2.2.5" />
+        <PackageReference Include="MSTest.TestFramework" Version="2.2.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\StudyHard.ContentManagement.Dto\StudyHard.ContentManagement.Dto.csproj" />
+      <ProjectReference Include="..\StudyHard.ContentManagement.Services\StudyHard.ContentManagement.Services.csproj" />
+      <ProjectReference Include="..\StudyHard.Data\StudyHard.Data.csproj" />
+      <ProjectReference Include="..\StudyHard.Dto\StudyHard.Dto.csproj" />
+      <ProjectReference Include="..\StudyHard.Services\StudyHard.Services.csproj" />
+    </ItemGroup>
+</Project>

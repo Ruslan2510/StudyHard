@@ -1,0 +1,38 @@
+﻿<div *ngIf="isLoading" class="page page-aside-left">
+    <div class="page-content container-fluid">
+        <div class="container mt-50">
+            <div style="text-align:center">
+                <app-loader></app-loader>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!isLoading" class="page page-aside-left">
+    <div class="row" style=" padding-left: 50px;width: 100%;">
+        <ol class="breadcrumb breadcrumb-arrow" style="padding-top: 100px;">
+            <li class="breadcrumb-item"><a class="icon wb-arrow-left" routerLink="/platform/categories/{{subjectId}}">Категоріі</a></li>
+            <li class="breadcrumb-item active">{{selectedCategoryName}}</li>
+        </ol>
+    </div>
+    <div class="documents-wrap article row" style=" margin-right: 1.9285rem; margin-left: 1.9285rem;">
+        <div class="article-sidebar sticky col-md-3 col-sm-12" id="articleSticky">
+            <div class="card-header">
+                <h3 class="card-title">{{selectedCategoryName}}</h3>
+            </div>
+            <ul class="list-group list-group-hover nav ">
+                <li class="list-group-item nav-item mobile-hidden-menu" (click)="toggleMenu()" style="cursor: pointer;">
+                    Зміст
+                    <i *ngIf="!isZmist" aria-hidden="true" class="site-menu-icon wb-triangle-left"></i>
+                    <i *ngIf="isZmist" aria-hidden="true" class="site-menu-icon wb-triangle-down"></i>
+                </li>
+                <li *ngFor="let t of theories; index as i" class="list-group-item nav-item mobile-hidden-zmist" [ngStyle]="{'display': isZmist ? 'block' : 'none'}">
+                    <a (click)="selectTheory(t.id)" href="javascript:void(0)" class="nav-link active">{{t?.nameSection}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="article-content col-md-9 col-sm-12">
+            <theory [theoryId]="selectedTheoryId"></theory>
+        </div>
+    </div>
+</div>

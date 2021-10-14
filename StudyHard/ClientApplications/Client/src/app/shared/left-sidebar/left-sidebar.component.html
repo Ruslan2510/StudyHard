@@ -1,0 +1,19 @@
+﻿<div class="site-menubar">
+    <div class="site-menubar-body">
+        <div>
+            <div>
+                <ul class="site-menu" data-plugin="menu">
+                    <li *ngIf="packagesNav && packagesNav.length > 0" class="site-menu-category">Курси</li>
+
+                    <li *ngFor="let pack of packagesNav; index as i" class="site-menu-item has-sub is-shown">
+
+                        <a routerLink="{{pack.url}}">
+                            <i class="site-menu-icon wb-extension" aria-hidden="true"></i>
+                            <span class="site-menu-title ml-2">{{pack.name}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

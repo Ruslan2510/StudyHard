@@ -1,0 +1,45 @@
+﻿<div class="page">
+    <div class="page-content container-fluid">
+        <div class="container">
+            <div *ngIf="isLoading" class="row mt-50">
+                <div style="margin:auto">
+                    <app-loader></app-loader>
+                </div>
+            </div>
+            <div *ngIf="!isLoading" class="row" style="padding-top:50px">
+                <div *ngFor="let c of categories; index as i" class="col-md-4 col-sm-12">
+                    <div class="panel block-min-height">
+                        <header class="panel-heading">
+                            <h3 class="panel-title"> {{c?.name}}</h3>
+                        </header>
+                        <div class="panel-body">
+                            <div *ngIf="c.isTestAvailable" class="row">
+                                <a *ngIf="c.correctAnswers > 0" routerLink="/platform/testresult/{{c.id}}" class="btn btn-success" style="width:100%">
+                                    <span>Перевірити відповіді на тест</span>
+                                </a>
+                            </div>
+                            <div *ngIf="c.isTestAvailable" class="row">
+                                <a *ngIf="c.correctAnswers < c.questionsCount" routerLink="/platform/{{subjectId}}/questions/{{c.id}}" class="btn btn-primary" style="width:100%">
+                                    <span>Розпочати тестування</span>
+                                </a>
+                            </div>
+                            <div *ngIf="c.isTestAvailable" class="row mb-20">
+                                <button *ngIf="c.correctAnswers > 0" (click)="cleanResults(c)" class="btn btn-danger" style="width:100%">
+                                    <span>Оновити результати тесту</span>
+                                </button>
+                            </div>
+
+                            <div *ngIf="c.isTheoryAvailable" class="row">
+                                <a routerLink="/platform/{{subjectId}}/theories/{{c.id}}" class="btn btn-primary" style="width:100%">
+                                    <span>Теоретичні матеріали</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

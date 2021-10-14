@@ -1,0 +1,19 @@
+﻿.mobile-hidden-menu {
+    display: none;
+}
+
+@media(max-width:767px) {
+    .mobile-hidden-menu {
+        display: block;
+    }
+
+    .mobile-hidden-zmist{
+        display:none;
+    }
+}
+
+@media(min-width:768px){
+    .mobile-hidden-zmist {
+        display: block !important;
+    }
+}

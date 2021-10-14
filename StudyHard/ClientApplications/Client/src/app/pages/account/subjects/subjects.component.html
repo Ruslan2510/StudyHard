@@ -1,0 +1,40 @@
+﻿<div class="page">
+
+    <div class="page-content container-fluid">
+        <div class="container">
+            <div *ngIf="isLoading" class="row mt-50">
+                <div style="margin:auto">
+                    <app-loader></app-loader>
+                </div>
+            </div>
+            <div *ngIf="!isLoading" class="row mt-50">
+                <div *ngFor="let s of subjects; index as i" class="col-md-3">
+                    <div class="panel panel-primary panel-bordered" data-plugin="appear" data-animate="fade">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{s?.name}}</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h5>Ваш прогресс по предмету</h5>
+                                </div>
+                                <div class="col-6">
+                                    <div style="font-size: 20px;">
+                                        
+                                        {{s.asweredTestsCount}} / {{s.testsCount}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <a routerLink="/platform/categories/{{s?.id}}" class="btn btn-primary" style="width:100%">
+                                    <span>Перейти</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

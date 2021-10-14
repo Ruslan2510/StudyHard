@@ -1,0 +1,29 @@
+﻿<div>
+    <div>
+        <div *ngIf="isLoading" class="mt-60">
+            <div style="text-align:center; margin:auto;">
+                <app-loader></app-loader>
+            </div>
+        </div>
+        <div *ngIf="!isLoading">
+            <div>
+                <div class="justify-content-md-center">
+                    <div>
+                        <div class="card theory-section-card">
+                            <div class="card-header">
+                                <h3 class="card-title">{{theory.nameSection}}</h3>
+                            </div>
+                            <div class="card-body theory-section" style="color:black;">
+                                <quill-view [content]="theory.content" format="json" theme="bubble">
+                                </quill-view>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                <notes [theoryId]="theoryId">
+                </notes>
+            </div>
+        </div>
+    </div>
+</div>
+     

@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "projects": {
+    "pravozno": {
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.json",
+            "aot": true,
+            "styles": [
+              "src/assets/global/css/bootstrap.min.css",
+              "src/assets/global/css/bootstrap-extend.min.css",
+              "src/assets/assets/css/site.css",
+              "src/assets/assets/css/site.min.css",
+              "src/assets/global/vendor/animsition/animsition.css",
+              "src/assets/global/vendor/asscrollable/asScrollable.css",
+              "src/assets/global/vendor/switchery/switchery.css",
+              "src/assets/global/vendor/intro-js/introjs.css",
+              "src/assets/global/vendor/slidepanel/slidePanel.css",
+              "src/assets/global/vendor/flag-icon-css/flag-icon.css",
+              "src/assets/global/vendor/slick-carousel/slick.css",
+              "src/assets/global/vendor/jvectormap/jquery-jvectormap.css",
+              "src/assets/assets/examples/css/dashboard/v1.css",
+              "src/assets/global/fonts/weather-icons/weather-icons.css",
+              "src/assets/global/fonts/web-icons/web-icons.min.css",
+              "src/assets/global/fonts/brand-icons/brand-icons.min.css",
+              "src/assets/assets/examples/css/widgets/chart.css",
+              "src/assets/assets/examples/css/widgets/chart.min.css",
+              "src/assets/assets/examples/css/advanced/animation.css",
+              "src/assets/assets/examples/css/advanced/animation.min.css",
+              "src/assets/assets/examples/css/apps/media.css"
+            ],
+            "scripts": [
+              "src/assets/global/vendor/breakpoints/breakpoints.js",
+              "src/assets/init.js",
+              "src/assets/global/vendor/babel-external-helpers/babel-external-helpers.js",
+              "src/assets/global/vendor/jquery/jquery.js",
+              "src/assets/pravotelegram.js",
+              "src/assets/pravoliqpay.js",
+              "src/assets/global/vendor/popper-js/umd/popper.min.js",
+              "src/assets/global/vendor/bootstrap/bootstrap.js",
+              "src/assets/global/vendor/animsition/animsition.js",
+              "src/assets/global/vendor/mousewheel/jquery.mousewheel.js",
+              "src/assets/global/vendor/asscrollbar/jquery-asScrollbar.js",
+              "src/assets/global/vendor/asscrollable/jquery-asScrollable.js",
+              "src/assets/global/vendor/ashoverscroll/jquery-asHoverScroll.js",
+              "src/assets/global/vendor/switchery/switchery.js",
+              "src/assets/global/vendor/intro-js/intro.js",
+              "src/assets/global/vendor/screenfull/screenfull.js",
+              "src/assets/global/vendor/slidepanel/jquery-slidePanel.js",
+              "src/assets/global/vendor/slick-carousel/slick.js",
+              "src/assets/global/vendor/skycons/skycons.js",
+              "src/assets/global/vendor/aspieprogress/jquery-asPieProgress.min.js",
+              "src/assets/global/vendor/jvectormap/jquery-jvectormap.min.js",
+              "src/assets/global/vendor/jvectormap/maps/jquery-jvectormap-au-mill-en.js",
+              "src/assets/global/vendor/matchheight/jquery.matchHeight-min.js",
+              "src/assets/global/js/Component.js",
+              "src/assets/global/js/Plugin.js",
+              "src/assets/global/js/Base.js",
+              "src/assets/global/js/Config.js",
+              "src/assets/assets/js/Section/Menubar.js",
+              "src/assets/assets/js/Section/GridMenu.js",
+              "src/assets/assets/js/Section/Sidebar.js",
+              "src/assets/assets/js/Section/PageAside.js",
+              "src/assets/assets/js/Plugin/menu.js",
+              "src/assets/global/js/config/colors.js",
+              "src/assets/assets/js/config/tour.js",
+              "src/assets/assets/js/Site.js",
+              "src/assets/global/js/Plugin/asscrollable.js",
+              "src/assets/global/js/Plugin/slidepanel.js",
+              "src/assets/global/js/Plugin/switchery.js",
+              "src/assets/global/js/Plugin/matchheight.js",
+              "src/assets/global/js/Plugin/jvectormap.js",
+              "src/assets/assets/examples/js/dashboard/v1.js",
+              "src/assets/global/js/config/update-jquery-3.0.js"
+            ],
+            "assets": [
+              "src/assets",
+              "src/assets",
+              "src/assets/assets",
+              "src/assets/assets/images",
+              "src/manifest.json"
+           ]        
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "serviceWorker": true,
+              "ngswConfigPath": "ngsw-config.json"
+            }
+          }         
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "pravozno:build"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "pravozno"  
+}

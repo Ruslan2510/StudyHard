@@ -1,0 +1,115 @@
+﻿<div *ngIf="isLoading" class="page page-aside-left loading-board">
+    <div class="page-content container-fluid">
+        <div class="container mt-50">
+            <div style="text-align:center">
+                <app-loader></app-loader>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-login-v2 layout-full login-container">
+    <div class="page" data-animsition-in="fade-in" data-animsition-out="fade-out">
+        <div class="page-content">
+            <div class="page-brand-info" >
+                <div class="brand">
+                    <img class="brand-img" style="width: 100px;" src="assets/assets/images/logo.png" alt="...">
+                    <h2 class="brand-text font-size-40 white-text">Pravozno</h2>
+                </div>
+            </div>
+            <div style="margin-right: 400px;">
+                <div class="container">
+                    <div class="row mobile-hidden" style="margin-top: 5%;">
+                        <div class="сol-6" style="padding-left: 15px; padding-right: 15px;">
+                            <p class="custom-header">
+                                До реєстрації на ЄФВВ/ЄВІ залишилось:
+                            </p>
+
+                            <znotimer></znotimer>
+                        </div>
+                        <div class="сol-6" style="padding-left: 15px; padding-right: 15px; ">
+                            <p class="custom-header white-text margin-bottom-ui small-padding">
+                                Головні дати ЗНО з правознавства 2021
+                            </p>
+                            <p class="font-size-20 white-text margin-bottom-ui">
+                                &bull;	11 травня - 3 червня (до 18:00) - реєстрація на ЄВІ/ЄФВВ
+                            </p>
+                            <p class="font-size-20 white-text margin-bottom-ui">
+                                &bull;	30 червня - ЄВІ
+                            </p>
+                            <p class="font-size-20 white-text margin-bottom-ui">
+                                &bull;	2 липня - ЄФВВ
+                            </p>
+                            <p class="font-size-20 white-text margin-bottom-ui">
+                                &bull;	1 липня - початок реєстрація електронних кабінетів
+                            </p>
+                            <p class="font-size-20 white-text margin-bottom-ui">
+                                &bull;	15 - 23 липня - подача заяв (електронно)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-login-main animation-slide-right animation-duration-1">
+                <div class="brand hidden-md-up">
+                    <img class="brand-img" style="width: 50px;" src="assets/assets/images/logo-colored@2x.png" alt="...">
+                    <h3 class="brand-text font-size-40">Pravozno</h3>
+                </div>
+                <h3 class="font-size-24">Увійти</h3>
+                <div>
+                    <form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
+                        <label for="email">Електронна адреса</label>
+                        <input type="text" id="email" formControlName="email">
+
+                        <label for="password">Пароль</label>
+                        <input type="password" id="password" formControlName="password">
+                        <button class="btn btn-success" type="submit" style="width: 240px;margin-top: 20px;height: 48px;">Увійти</button>
+                    </form>
+
+                    <a routerLink="registration">Реєстрація</a>
+                </div>
+                <div class="telegram-login-container">
+                    <div #script style.display="none">
+                        <ng-content></ng-content>
+                    </div>
+                </div>
+                <div class="mobile-view">
+                    <p class="custom-header mobile-margin">
+                        До реєстрації на ЄФВВ/ЄВІ залишилось:
+                    </p>
+
+                    <znotimer></znotimer>
+                </div>
+                <div class="mobile-view">
+                    <p class="custom-header margin-bottom-ui small-padding mobile-margin">
+                        Головні дати ЗНО з правознавства 2021
+                    </p>
+                    <p class="custom-header margin-bottom-ui">
+                        &bull;	11 травня - 3 червня (до 18:00) - реєстрація на ЄВІ/ЄФВВ
+                    </p>
+                    <p class="custom-header margin-bottom-ui">
+                        &bull;	30 червня - ЄВІ
+                    </p>
+                    <p class="custom-header margin-bottom-ui">
+                        &bull;	2 липня - ЄФВВ
+                    </p>
+                    <p class="custom-header margin-bottom-ui">
+                        &bull;	1 липня - початок реєстрація електронних кабінетів
+                    </p>
+                    <p class="custom-header margin-bottom-ui">
+                        &bull;	15 - 23 липня - подача заяв (електронно)
+                    </p>
+                </div>
+                <footer class="page-copyright">
+                    <p>
+                        <img src="assets/visamaster.png" style="max-height:50px" />
+                    </p>
+                    <p>© Pravozno 2021</p>
+                    <a href="/shared/termofuses">Правила користування</a>
+                    <br />
+                    <a href="/shared/aboutcompany">Про нас</a>
+                </footer>
+            </div>
+        </div>
+    </div>
+</div>

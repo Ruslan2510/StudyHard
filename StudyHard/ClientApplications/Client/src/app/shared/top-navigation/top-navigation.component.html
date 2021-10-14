@@ -1,0 +1,63 @@
+﻿<nav class="site-navbar navbar navbar-default navbar-fixed-top navbar-mega" role="navigation">
+
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler hamburger hamburger-close navbar-toggler-left hided"
+                data-toggle="menubar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="hamburger-bar"></span>
+        </button>
+        <button type="button" class="navbar-toggler collapsed" data-target="#site-navbar-collapse"
+                data-toggle="collapse">
+            <i class="icon wb-more-horizontal" aria-hidden="true"></i>
+        </button>
+        <div style="outline: none;!important" routerLink="/platform/user" class="navbar-brand navbar-brand-center site-gridmenu-toggle">
+            <img class="navbar-brand-logo" src="assets/assets/images/logo.png" title="Remark">
+            <span class="navbar-brand-text hidden-xs-down">Pravozno</span>
+        </div>
+    </div>
+
+    <div class="navbar-container container-fluid">
+        <!-- Navbar Collapse -->
+        <div class="collapse navbar-collapse navbar-collapse-toolbar" id="site-navbar-collapse">
+            <!-- Navbar Toolbar -->
+            <ul class="nav navbar-toolbar">
+                <li class="nav-item hidden-float" id="toggleMenubar">
+                    <a class="nav-link" data-toggle="menubar" href="#" role="button">
+                        <i class="icon hamburger ">
+                            <span class="sr-only">Toggle menubar</span>
+                            <span class="hamburger-bar"></span>
+                        </i>
+                    </a>
+                </li>
+                <li class="nav-item hidden-sm-down" id="toggleFullscreen">
+                    <a class="nav-link icon icon-fullscreen" data-toggle="fullscreen" href="#" role="button">
+                        <span class="sr-only">Toggle fullscreen</span>
+                    </a>
+                </li>
+            </ul>
+            <!-- End Navbar Toolbar -->
+            <!-- Navbar Toolbar Right -->
+            <ul *ngIf="user" class="nav navbar-toolbar navbar-right navbar-toolbar-right">
+                <li class="nav-item dropdown">
+                    <a class="nav-link navbar-avatar" data-toggle="dropdown" href="#" aria-expanded="false" style="cursor:pointer"
+                       data-animation="scale-up" role="button">
+                        <!-- user avatar -->
+                        <span *ngIf="user.image; else defaultImage" class="avatar avatar-online">
+                            <img [src]="user.image" alt="...">
+                            <i></i>
+                        </span>
+                        <ng-template #defaultImage>
+                            <span class="avatar avatar-online">
+                                <img src="assets/global/portraits/5.jpg" alt="...">                                
+                            </span>
+                        </ng-template>
+                    </a>
+                    <div class="dropdown-menu" role="menu">
+                        <a class="dropdown-item" (click)="logout()" routerLink="/" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> Вийти</a>
+                    </div>
+                </li>
+            </ul>
+            <!-- End Navbar Toolbar Right -->
+        </div>
+    </div>
+</nav>

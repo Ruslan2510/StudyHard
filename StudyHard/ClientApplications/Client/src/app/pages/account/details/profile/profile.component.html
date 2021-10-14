@@ -1,0 +1,72 @@
+﻿<div class="page">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12" *ngIf="isLoading" style="margin:auto">
+                    <div style="text-align: center;">
+                        <app-loader></app-loader>
+                    </div>
+                </div>
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <div *ngIf="!isLoading" class="row panel mt-80">
+                        <div class="panel-body container-fluid">
+                            <div class="row">
+                                <div class="col-4">
+                                </div>
+                                <div class="col-4" style=" text-align: center;">
+                                    <div *ngIf="user.image; else defaultImage" class="avatar avatar-100" href="javascript:void(0)">
+                                        <img [src]="user.image" alt="...">
+                                    </div>
+                                    <ng-template #defaultImage>
+                                        <div class="avatar avatar-100" href="javascript:void(0)">
+                                            <img src="assets/global/portraits/5.jpg" alt="...">
+                                        </div>
+                                    </ng-template>
+                                </div>
+                                <div class="col-4">
+                                </div>
+                            </div>
+                            <br />
+                            <div class="mb-20">
+                                <h4 class="example-title">Ім'я<span style="color:red">*</span></h4>
+                                <input type="text" [(ngModel)]="user.name" class="form-control">
+                                <span *ngIf="user.name && user.name.length < 2" style="color:red">Подивіться у паспорті</span>
+                            </div>
+                            <div class="mb-20">
+                                <h4 class="example-title">Пошта<span style="color:red">*</span></h4>
+                                <input type="text" [(ngModel)]="user.customEmail" class="form-control">
+                                <span *ngIf="user.customEmail && !user.customEmail.includes('@')" style="color:red">Пошта має містити @</span>
+                            </div>
+                            <div class="mb-20">
+                                <h4 class="example-title">Номер телефону<span style="color:red">*</span></h4>
+                                <input type="text" value="user.phoneNumber" [(ngModel)]="user.phoneNumber" prefix="+38" mask="(000) 000 00 00" class="form-control">
+                                <span *ngIf="user.phoneNumber && user.phoneNumber.length < 10" style="color:red">Невірно набраний номер</span>
+                            </div>
+                            <div class="mb-20">
+                                <h4 class="example-title">Університет</h4>
+                                <div class="form-group">
+                                    <select [(ngModel)]="user.universityId" class="form-control">
+                                        <option *ngFor="let univer of universities" [(ngValue)]="univer.id" [attr.checked]="user.universityId == univer.id ? 'checked' : null">{{univer.name}}</option>
+                                    </select>
+                                    <!--<label>Або впишіть якщо його немає в списку</label>
+                                    <input type="text" [(ngModel)]="user.university" class="form-control">-->
+
+                                </div>
+                            </div>
+                            <div style="text-align:right">
+                                <button [disabled]="(!user.name || user.name.length == 0) || (!user.phoneNumber || user.phoneNumber.length < 10) || (!user.email || !user.email.includes('@'))" (click)="save()" class="btn btn-primary">Зберегти</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

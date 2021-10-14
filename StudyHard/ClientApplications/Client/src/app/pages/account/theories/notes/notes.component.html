@@ -1,0 +1,58 @@
+﻿<div *ngIf="isLoading" class="container mr-200 ml-200">
+    <div style="text-align:center; margin:auto">
+        <app-loader></app-loader>
+    </div>
+</div>
+<div *ngIf="!isLoading">
+    <div class="justify-content-md-center">
+        <div>
+            <h4 style="color:black;">Ваші замітки:</h4>
+            <div *ngFor="let n of notes" class="panel" style="color:black;">
+                <quill-view [content]="n.content" format="json" theme="bubble">
+                </quill-view>
+            </div>
+        </div>
+    </div>
+    <div class="justify-content-md-center">
+        <div>
+            <div class="panel" >
+                <div class="panel-body">
+                    <div class="new-note-form card">
+                        <quill-editor (onContentChanged)="contentChange($event)" [styles]="{height: '250px'}" placeholder="Почніть вводити тут...">
+                            <div quill-editor-toolbar>
+                                <span class="ql-formats">
+                                    <select class="ql-font">
+                                        <option selected></option>
+                                        <option value="serif"></option>
+                                        <option value="monospace"></option>
+                                    </select>
+                                    <select class="ql-size">
+                                        <option value="small"></option>
+                                        <option selected></option>
+                                        <option value="large"></option>
+                                        <option value="huge"></option>
+                                    </select>
+                                </span>
+                                <span class="ql-formats">
+                                    <button class="ql-bold"></button>
+                                    <button class="ql-italic"></button>
+                                    <button class="ql-underline"></button>
+                                    <button class="ql-strike"></button>
+                                </span>
+                                <span class="ql-formats">
+                                    <select class="ql-color"></select>
+                                    <select class="ql-background"></select>
+                                </span>
+                            </div>
+                        </quill-editor>
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="button" style="width:150px;" class="btn btn-success" (click)="addNote()">
+                            <span>Додати</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
